@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Clock</title>
+</head>
+
+<body>
+    <div class="navigation">
+        <div class="toggle">
+        </div>
+        <div class="main-section">
+            <div class="row">
+                <div class="clock-tabs">
+                    <span class="tab-item active" data-target=".Clock">Clock</span>
+                    <span class="tab-item" data-target=".Alarm">Alarm</span>
+                    <span class="tab-item" data-target=".Stopwatch">Stopwatch</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="Clock tab-content active">
+                    <div class="clock-container">
+                        <div class="clock">
+                            <div class="hour">
+                                <div class="hr" id="hr"></div>
+                            </div>
+                            <div class="min">
+                                <div class="mn" id="mn"></div>
+                            </div>
+                            <div class="sec">
+                                <div class="sc" id="sc"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="row2">
+                <div class="Alarm tab-content">
+                    <div class="alarmdiv">
+                        <div class="alarmcontents">
+
+                            <input type="datetime-local" name="" id="alarmTime">
+                            <button onclick="setAlarm(this)" id="alarmbutton">Set Alarm</button>
+                        </div>
+                        <div id="alarmOptions" style="display: none;">
+                            <button onclick="snooze()">Snooze</button>
+                            <button onclick="stopAlarm()">Stop Alarm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="row3">
+                <div class="Stopwatch tab-content">
+                    <div class="container">
+                        <div class="displayTimer">
+                            00 : 00 : 00 : 000
+                        </div>
+                        <div class="buttons">
+                            <button id="start">Start</button>
+                            <button id="pause">Pause</button>
+                            <button id="reset">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="new.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(".navigation").draggable();
+        });
+    </script>
+</body>
+
+</html>

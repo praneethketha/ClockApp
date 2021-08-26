@@ -1,0 +1,432 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background: #02333f;
+    overflow: hidden;
+}
+
+body::before {
+    content: 'CLOCK APP';
+    position: fixed;
+    font-size: 10vw;
+    opacity: 0.1;
+    z-index: -1;
+    font-family: monospace;
+}
+
+.main-section {
+    display: block;
+    width: 50vw;
+    height: 70vh;
+    margin: auto;
+}
+
+.main-section .tab-content {
+    padding: 0 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-section .tab-content {
+    display: none;
+}
+
+.main-section .tab-content.active {
+    display: block;
+}
+
+.main-section .clock-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh 0;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.main-section .clock-tabs .tab-item {
+    padding: 5px 35px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main-section .clock-tabs .tab-item:hover:not(.active) {
+    opacity: 0.6;
+}
+
+.main-section .clock-tabs .tab-item.active {
+    border-bottom: 2px solid orangered;
+    color: orangered;
+}
+
+.tab-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/clock.png) no-repeat center center/cover;
+    box-shadow: 0px -12px 12px rgba(255, 255, 255, 0.05),
+        inset 0 -12px 12px rgba(255, 255, 255, 0.05),
+        0 12px 12px rgba(0, 0, 0, 0.3),
+        inset 0 12px 12px rgba(0, 0, 0, 0.3);
+    border: 6px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.clock:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+    position: absolute;
+}
+
+.clock .hour,
+.hr {
+    width: 40px;
+    height: 20px;
+}
+
+.clock .min,
+.mn {
+    width: 60px;
+    height: 15px;
+}
+
+.clock .sec,
+.sc {
+    width: 80px;
+    height: 30px;
+}
+
+.hr,
+.mn,
+.sc {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    border-radius: 50%;
+    position: absolute;
+}
+
+.hr::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 50px;
+    background: orangered;
+    z-index: 10;
+    border-radius: 6px 6px 0 0;
+}
+
+.mn::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 65px;
+    background: orange;
+    z-index: 11;
+    border-radius: 6px 6px 0 0;
+}
+
+.sc::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    background: black;
+    z-index: 12;
+    border-radius: 6px 6px 0 0;
+}
+
+
+/* alarm styling */
+#row2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alarmdiv {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.alarmcontents {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1rem;
+}
+
+#alarmOptions {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1rem;
+}
+
+#alarmbutton,
+#alarmOptions button {
+    padding: 4px 15px;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    font-size: 16px;
+    background: transparent;
+    font-family: sans-serif;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#alarmbutton:hover,
+#alarmOptions button:hover {
+    color: white;
+    border: 1px solid white;
+}
+
+#alarmTime {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    background: transparent;
+    place-content: center;
+    outline: none;
+    color: white;
+}
+
+/* stopwatch styling */
+#row3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayTimer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.buttons {
+    width: 100%;
+    margin: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    padding: 5px 15px;
+    background:transparent;
+    color:  rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+}
+
+.buttons button:hover {
+    border: 1px solid #fff;
+    color: #ffff;
+}
+
+
+
+/* appsection */
+.navigation {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: qpx solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    transition: width 0.5s, height 0.5s;
+    transition-delay: 0s, 0.75s;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.toggle {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(252, 104, 50);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.navigation .toggle::before {
+    content: '+';
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.navigation .toggle.active2 {
+    background: transparent;
+}
+
+.navigation .toggle.active2::before {
+    transform: rotate(315deg);
+}
+
+.navigation.active2 {
+    width: 50vw;
+    height: 70vh;
+    transition: height 0.5s, width 0.5s;
+    transition-delay: 0s, 0.75;
+}
+
+
+/* responsive */
+@media screen and (max-width:760px) {
+    .main-section .clock-tabs {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        grid-gap: 1rem;
+        text-align: center;
+        margin-top: -1rem;
+
+    }
+
+    .navigation.active2 {
+        width: 80vw;
+        height: 80vh;
+        transition: height 0.5s, width 0.5s;
+        transition-delay: 0s, 0.75;
+    }
+}
+
+@media screen and (max-width:664px) {
+    .alarmcontents {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        grid-gap: 1rem;
+    }
+
+    #alarmOptions {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        grid-gap: 1rem;
+    }
+
+
+}
+
+@media screen and (max-width:420px) {
+    .clock {
+        width: 130px;
+        height: 130px;
+    }
+
+    .hr::before {
+        width: 3px;
+        height: 40px;
+    }
+
+    .mn::before {
+        width: 2px;
+        height: 55px;
+    }
+
+    .sc::before {
+        width: 1px;
+        height: 70px;
+    }
+}
+@media screen and (max-width:340px){
+    .navigation.active2 {
+        width: 90vw;
+        height: 90vh;
+        transition: height 0.5s, width 0.5s;
+        transition-delay: 0s, 0.75;
+    }
+    .clock {
+        width: 125px;
+        height: 125px;
+        box-shadow: 0px -8px 8px rgba(255, 255, 255, 0.05),
+        inset 0 -8px 8px rgba(255, 255, 255, 0.05),
+        0 8px 8px rgba(0, 0, 0, 0.3),
+        inset 0 8px 8px rgba(0, 0, 0, 0.3);
+        border: 4px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hr::before {
+        width: 3px;
+        height: 35px;
+    }
+
+    .mn::before {
+        width: 2px;
+        height: 50px;
+    }
+
+    .sc::before {
+        width: 1px;
+        height: 65px;
+    }
+    .displayTimer{
+        width: 85%;
+    }
+}
